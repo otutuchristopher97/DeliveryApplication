@@ -2,6 +2,7 @@ package com.ParcelDelivery.EnterpriseParcelDelivery.controller;
 
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.DeliveryStatus;
 import com.ParcelDelivery.EnterpriseParcelDelivery.service.DeliveryStatusService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,11 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api")
 public class DeliveryStatusController {
-    @Autowired
-    private DeliveryStatusService service;
+    private final DeliveryStatusService service;
 
     @PostMapping("/status/add")
     public ResponseEntity<DeliveryStatus> saveStatus(@RequestBody @Valid DeliveryStatus deliveryStatus){

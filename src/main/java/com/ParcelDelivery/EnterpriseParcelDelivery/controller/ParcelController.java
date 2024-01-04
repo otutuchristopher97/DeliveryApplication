@@ -5,20 +5,20 @@ import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Parcel;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
 import com.ParcelDelivery.EnterpriseParcelDelivery.service.ParcelService;
 import com.ParcelDelivery.EnterpriseParcelDelivery.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api")
 public class ParcelController {
-    @Autowired
-    private ParcelService service;
+    private final ParcelService service;
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
    @PostMapping("/parcel/add")
     public Parcel addParcel(@RequestBody ParcelDTO parcelDTO, @AuthenticationPrincipal User user){

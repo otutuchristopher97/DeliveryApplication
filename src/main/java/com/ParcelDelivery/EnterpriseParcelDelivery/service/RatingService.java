@@ -7,19 +7,17 @@ import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Rating;
 import com.ParcelDelivery.EnterpriseParcelDelivery.factory.RatingFactory;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.DeliveryRequestRepository;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.RatingRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+@RequiredArgsConstructor
 @Service
 public class RatingService {
-    @Autowired
-    private RatingRepository repository;
-    @Autowired
-    private DeliveryRequestRepository deliveryRequestRepository;
+    private final RatingRepository repository;
+    private final DeliveryRequestRepository deliveryRequestRepository;
 
-    @Autowired
-    private RatingFactory ratingFactory;
+    private final RatingFactory ratingFactory;
 
     public RatingDTO createRating(RatingDTO ratingDTO){
         DeliveryRequest deliveryRequest =  deliveryRequestRepository.findById(ratingDTO.getDelivery_request_id()).orElse(null);

@@ -1,16 +1,15 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.controller;
 
 import com.ParcelDelivery.EnterpriseParcelDelivery.dto.RatingDTO;
-import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Rating;
 import com.ParcelDelivery.EnterpriseParcelDelivery.service.RatingService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api")
 public class RatingController {
-    @Autowired
-    private RatingService service;
+    private final RatingService service;
     @PostMapping("/rating/create")
     public RatingDTO createRating(@RequestBody RatingDTO ratingDTO){
 

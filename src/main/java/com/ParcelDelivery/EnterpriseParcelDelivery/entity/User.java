@@ -26,7 +26,6 @@ public class User {
 
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "role_id")
-//    @JsonBackReference
     private Role role;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)

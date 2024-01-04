@@ -6,27 +6,23 @@ import com.ParcelDelivery.EnterpriseParcelDelivery.dto.DeliveryRequestResponseDT
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.*;
 import com.ParcelDelivery.EnterpriseParcelDelivery.factory.DeliveryRequestFactory;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class DeliveryRequestService {
-    @Autowired
-    private DeliveryRequestRepository deliveryRequestRepository;
-    @Autowired
-    private DriverRepository driverRepository;
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private DeliveryStatusRepository deliveryStatusRepository;
-    @Autowired
-    private ParcelRepository parcelRepository;
+    private final DeliveryRequestRepository deliveryRequestRepository;
+    private final DriverRepository driverRepository;
+    private final UserRepository userRepository;
+    private final DeliveryStatusRepository deliveryStatusRepository;
+    private final ParcelRepository parcelRepository;
 
-    @Autowired
-    DeliveryRequestFactory deliveryRequestFactory;
+    private final DeliveryRequestFactory deliveryRequestFactory;
 
 
     public DeliveryRequestResponseDTO saveDeliveryRequest(DeliveryRequestDTO deliveryRequestDTO){

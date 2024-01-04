@@ -6,6 +6,7 @@ import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
 import com.ParcelDelivery.EnterpriseParcelDelivery.factory.RecipientAddressFactory;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.RecipientAddressRepository;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,22 +14,20 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+@RequiredArgsConstructor
 @Slf4j
 @Service
 public class RecipientAddressService {
-    @Autowired
-    private RecipientAddressRepository repository;
+    private final RecipientAddressRepository repository;
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private RecipientAddressFactory recipientAddressFactory;
+    private final RecipientAddressFactory recipientAddressFactory;
 
 
 
     public RecipientAddressDTO saveRecipientAddress(RecipientAddressDTO recipientAddressDTO){
-//        recipientAddressDTO.setUser_id();
         RecipientAddress recipientAddress = recipientAddressFactory.createEntity(recipientAddressDTO);
         repository.save(recipientAddress);
         RecipientAddressDTO dto = recipientAddressFactory.responseEntity(recipientAddress);

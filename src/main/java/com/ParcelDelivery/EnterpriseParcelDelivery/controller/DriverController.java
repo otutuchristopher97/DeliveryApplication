@@ -3,6 +3,7 @@ package com.ParcelDelivery.EnterpriseParcelDelivery.controller;
 import com.ParcelDelivery.EnterpriseParcelDelivery.dto.DriverDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Driver;
 import com.ParcelDelivery.EnterpriseParcelDelivery.service.DriverService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,12 +13,12 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@RequiredArgsConstructor
 @Slf4j
 @RestController
 @RequestMapping("/api")
 public class DriverController {
-    @Autowired
-    private DriverService service;
+    private final DriverService service;
 
     @PostMapping("/driver/add")
     public ResponseEntity<DriverDTO> saveDriver(@RequestBody @Valid DriverDTO driverDTO){

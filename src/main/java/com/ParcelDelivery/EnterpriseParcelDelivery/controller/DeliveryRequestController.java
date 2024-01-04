@@ -6,6 +6,7 @@ import com.ParcelDelivery.EnterpriseParcelDelivery.entity.DeliveryRequest;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
 import com.ParcelDelivery.EnterpriseParcelDelivery.service.DeliveryRequestService;
 import com.ParcelDelivery.EnterpriseParcelDelivery.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -14,13 +15,12 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api")
 public class DeliveryRequestController {
-    @Autowired
-    private DeliveryRequestService service;
-    @Autowired
-    private UserService userService;
+    private final DeliveryRequestService service;
+    private final UserService userService;
 
     @PostMapping("/request/create")
     public DeliveryRequestResponseDTO saveDeliveryRequest(@RequestBody @Valid DeliveryRequestDTO deliveryRequestDTO, @AuthenticationPrincipal User user){

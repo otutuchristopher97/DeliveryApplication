@@ -13,26 +13,22 @@ import com.ParcelDelivery.EnterpriseParcelDelivery.factory.UserFactory;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.DriverRepository;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.RoleRepository;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class DriverService {
-    @Autowired
-    private DriverRepository driverRepository;
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private UserFactory userFactory;
+    private final DriverRepository driverRepository;
+    private final UserRepository userRepository;
+    private final UserFactory userFactory;
+    private final RoleRepository roleRepository;
 
-    @Autowired
-    private RoleRepository roleRepository;
-
-    @Autowired
-    private DriverFactory driverFactory;
+    private final DriverFactory driverFactory;
 
     public DriverDTO saveDriver(DriverDTO driverDTO){
 

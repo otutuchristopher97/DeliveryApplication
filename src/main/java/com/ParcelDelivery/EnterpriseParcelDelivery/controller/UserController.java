@@ -8,6 +8,7 @@ import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
 import com.ParcelDelivery.EnterpriseParcelDelivery.service.CustomUserDetailsService;
 import com.ParcelDelivery.EnterpriseParcelDelivery.service.UserService;
 import com.ParcelDelivery.EnterpriseParcelDelivery.util.JwtUtil;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,19 +28,16 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 @Slf4j
 @RestController
 @RequestMapping("/api")
 public class UserController {
-    @Autowired
-    private UserService service;
-    @Autowired
-    private JwtUtil jwtUtil;
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final UserService service;
+    private final JwtUtil jwtUtil;
+    private final AuthenticationManager authenticationManager;
 
-    @Autowired
-    private CustomUserDetailsService customUserDetailsService;
+    private final CustomUserDetailsService customUserDetailsService;
 
 
 
@@ -58,7 +56,6 @@ public class UserController {
 
     }
     @GetMapping("/users")
-//    @PreAuthorize("hasAuthority('Admin')")
     public ResponseEntity<List<User>> findAllUsers(@RequestParam(value="role_id",required = false) Integer role_id){
         if(role_id !=null){
             return ResponseEntity.ok(service.getUsersByRoleId(role_id));

@@ -5,17 +5,19 @@ import com.ParcelDelivery.EnterpriseParcelDelivery.dto.ParcelDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Parcel;
 import com.ParcelDelivery.EnterpriseParcelDelivery.factory.ParcelFactory;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.ParcelRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class ParcelService {
-    @Autowired
-    private ParcelRepository repository;
-    @Autowired
-    private ParcelFactory parcelFactory;
+
+    private final ParcelRepository repository;
+
+    private final ParcelFactory parcelFactory;
 
     public Parcel saveParcel(ParcelDTO parcelDTO){
         Parcel parcel = parcelFactory.createEntity(parcelDTO);

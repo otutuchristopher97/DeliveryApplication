@@ -16,6 +16,4 @@ public class DeliveryStatus {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String status;
-//    @OneToOne(mappedBy = "deliveryStatus")
-//    private DeliveryRequest deliveryRequest;
 }

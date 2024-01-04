@@ -5,6 +5,7 @@ import com.ParcelDelivery.EnterpriseParcelDelivery.entity.RecipientAddress;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
 import com.ParcelDelivery.EnterpriseParcelDelivery.service.RecipientAddressService;
 import com.ParcelDelivery.EnterpriseParcelDelivery.service.UserService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,14 +19,13 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api")
 @Slf4j
 public class RecipientAddressController {
-    @Autowired
-    private RecipientAddressService service;
-    @Autowired
-    private UserService userService;
+    private final RecipientAddressService service;
+    private final UserService userService;
     @PostMapping("/recipient-address/save")
     public RecipientAddressDTO saveRecipientAddress(@RequestBody @Valid RecipientAddressDTO recipientAddressDTO,@AuthenticationPrincipal User user){
         User loggedInUser = userService.authenticatedUser(user);

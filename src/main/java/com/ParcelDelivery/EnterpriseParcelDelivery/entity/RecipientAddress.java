@@ -18,7 +18,6 @@ public class RecipientAddress {
     private int id;
 
     @ManyToOne
-//    @JsonIgnore
     @JoinColumn(name = "user_id")
     private User user;
 
