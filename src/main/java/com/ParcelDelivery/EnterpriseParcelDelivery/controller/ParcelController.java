@@ -17,7 +17,6 @@ import java.util.List;
 @RequestMapping("/api")
 public class ParcelController {
     private final ParcelService service;
-
     private final UserService userService;
 
    @PostMapping("/parcel/add")

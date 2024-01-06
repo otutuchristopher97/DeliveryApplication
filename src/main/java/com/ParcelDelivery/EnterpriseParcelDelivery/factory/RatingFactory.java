@@ -8,13 +8,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RatingFactory {
-
     public Rating createEntity(RatingDTO ratingDTO, DeliveryRequest deliveryRequest){
         Rating rating = new Rating();
         rating.setSender_rating(ratingDTO.getSender_rating());
         rating.setDeliveryRequest(deliveryRequest);
         return rating;
-
     }
     public RatingDTO createDTO(Rating rating){
         RatingDTO dto = new RatingDTO();

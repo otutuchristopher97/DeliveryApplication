@@ -1,22 +1,16 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.controller;
 
 import com.ParcelDelivery.EnterpriseParcelDelivery.dto.RecipientAddressDTO;
-import com.ParcelDelivery.EnterpriseParcelDelivery.entity.RecipientAddress;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
 import com.ParcelDelivery.EnterpriseParcelDelivery.service.RecipientAddressService;
 import com.ParcelDelivery.EnterpriseParcelDelivery.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.AuthenticatedPrincipal;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.parser.Entity;
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -37,8 +31,6 @@ public class RecipientAddressController {
     @PutMapping("/recipient-address/update")
     public RecipientAddressDTO updateRecipientAddress(@RequestBody @Valid RecipientAddressDTO recipientAddressDTO){
         return service.updateRecipientAddress(recipientAddressDTO);
-
-
     }
     @GetMapping("/recipient-address")
     public ResponseEntity<List<RecipientAddressDTO>> findAllAddress(@RequestParam(value="user_id",required = false) Integer user_id){

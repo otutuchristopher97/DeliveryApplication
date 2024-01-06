@@ -1,4 +1,4 @@
-package com.ParcelDelivery.EnterpriseParcelDelivery.repository;
+package com.ParcelDelivery.EnterpriseParcelDelivery.driver;
 
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Driver;
 import org.springframework.data.jpa.repository.JpaRepository;

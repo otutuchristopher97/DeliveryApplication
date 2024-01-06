@@ -28,8 +28,8 @@ public class DeliveryRequestFactory {
         deliveryRequest.setRecipient_address_id(deliveryRequestDTO.getRecipient_address_id());
         deliveryRequest.setSender_address(deliveryRequestDTO.getSender_address());
         return deliveryRequest;
-
     }
+
     public DeliveryRequestResponseDTO createEntityResponse (DeliveryRequest deliveryRequest){
         DeliveryRequestResponseDTO dto = new DeliveryRequestResponseDTO();
         dto.setId(deliveryRequest.getId());

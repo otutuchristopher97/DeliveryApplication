@@ -1,11 +1,9 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.service;
 
-import com.ParcelDelivery.EnterpriseParcelDelivery.advice.BadRequestException;
+import com.ParcelDelivery.EnterpriseParcelDelivery.exception.BadRequestException;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.DeliveryStatus;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.DeliveryStatusRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

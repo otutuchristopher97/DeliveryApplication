@@ -4,14 +4,15 @@ import com.ParcelDelivery.EnterpriseParcelDelivery.dto.RecipientAddressDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.RecipientAddress;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class RecipientAddressFactory {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
     public RecipientAddress createEntity(RecipientAddressDTO dto){
         User user = userRepository.findById(dto.getUser_id()).orElse(null);
         RecipientAddress recipientAddress = new RecipientAddress();

@@ -1,10 +1,9 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.service;
 
-import com.ParcelDelivery.EnterpriseParcelDelivery.advice.BadRequestException;
+import com.ParcelDelivery.EnterpriseParcelDelivery.exception.BadRequestException;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Role;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

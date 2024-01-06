@@ -1,16 +1,14 @@
-package com.ParcelDelivery.EnterpriseParcelDelivery.controller;
+package com.ParcelDelivery.EnterpriseParcelDelivery.driver;
 
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.DriverDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Driver;
-import com.ParcelDelivery.EnterpriseParcelDelivery.service.DriverService;
+import com.ParcelDelivery.EnterpriseParcelDelivery.factory.DriverFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -19,18 +17,19 @@ import java.util.List;
 @RequestMapping("/api")
 public class DriverController {
     private final DriverService service;
+    private final DriverFactory driverDtoFactory;
 
     @PostMapping("/driver/add")
-    public ResponseEntity<DriverDTO> saveDriver(@RequestBody @Valid DriverDTO driverDTO){
-        return new ResponseEntity<>(service.saveDriver(driverDTO), HttpStatus.CREATED);
+    public DriverDTO saveDriver(@RequestBody @Valid DriverDTO driverDTO){
+        return driverDtoFactory.createDriverDTO(service.saveDriver(driverDTO));
     }
     @GetMapping("/drivers")
-    public ResponseEntity<List> findAllDrivers(){
+    public ResponseEntity<List<DriverDTO>> findAllDrivers(){
         return ResponseEntity.ok(service.getDrivers());
     }
     @GetMapping("/driver/{id}")
-    public DriverDTO getDriverById(@PathVariable int id){
-        return service.findByDriverId(id);
+    public DriverDTO getDriverById(@PathVariable(name = "id") @Min(value = 1, message = "Id must be greater than zero") int id){
+        return driverDtoFactory.createDriverDTO(service.getDriverById(id));
     }
     @PutMapping("/driver/update")
     public Driver updateDriver(@RequestBody Driver driver){

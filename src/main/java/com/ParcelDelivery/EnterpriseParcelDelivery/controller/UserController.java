@@ -1,6 +1,6 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.controller;
 
-import com.ParcelDelivery.EnterpriseParcelDelivery.advice.BadRequestException;
+import com.ParcelDelivery.EnterpriseParcelDelivery.exception.BadRequestException;
 import com.ParcelDelivery.EnterpriseParcelDelivery.dto.AuthDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.dto.AuthResponseDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.dto.UserDTO;
@@ -10,18 +10,14 @@ import com.ParcelDelivery.EnterpriseParcelDelivery.service.UserService;
 import com.ParcelDelivery.EnterpriseParcelDelivery.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -38,9 +34,6 @@ public class UserController {
     private final AuthenticationManager authenticationManager;
 
     private final CustomUserDetailsService customUserDetailsService;
-
-
-
 
     @PostMapping("/user/add")
     public ResponseEntity<User> saveUser(@RequestBody @Valid  UserDTO userDTO){

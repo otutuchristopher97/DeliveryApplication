@@ -1,6 +1,6 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.factory;
 
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.DriverDTO;
+import com.ParcelDelivery.EnterpriseParcelDelivery.driver.DriverDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Driver;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
 import org.springframework.stereotype.Service;
@@ -16,6 +16,11 @@ public class DriverFactory {
         return driver;
     }
     public DriverDTO createDriverDTO(Driver driver){
+        if (driver == null)
+        {
+            return null;
+        }
+
         DriverDTO dto = new DriverDTO();
         dto.setUser_id(driver.getUser().getId());
         dto.setName(driver.getUser().getName());

@@ -1,8 +1,7 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.UserController;
 
+import com.ParcelDelivery.EnterpriseParcelDelivery.driver.DriverDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.dto.*;
-import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Role;
-import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.RoleRepository;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
 import static org.junit.jupiter.api.Assertions.*;

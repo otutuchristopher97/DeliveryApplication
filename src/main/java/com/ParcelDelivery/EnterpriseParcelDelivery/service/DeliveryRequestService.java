@@ -1,13 +1,13 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.service;
 
-import com.ParcelDelivery.EnterpriseParcelDelivery.advice.BadRequestException;
+import com.ParcelDelivery.EnterpriseParcelDelivery.driver.DriverRepository;
+import com.ParcelDelivery.EnterpriseParcelDelivery.exception.BadRequestException;
 import com.ParcelDelivery.EnterpriseParcelDelivery.dto.DeliveryRequestDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.dto.DeliveryRequestResponseDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.*;
 import com.ParcelDelivery.EnterpriseParcelDelivery.factory.DeliveryRequestFactory;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

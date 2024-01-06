@@ -1,6 +1,6 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.service;
 
-import com.ParcelDelivery.EnterpriseParcelDelivery.advice.BadRequestException;
+import com.ParcelDelivery.EnterpriseParcelDelivery.exception.BadRequestException;
 import com.ParcelDelivery.EnterpriseParcelDelivery.dto.RatingDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.DeliveryRequest;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Rating;
@@ -8,7 +8,6 @@ import com.ParcelDelivery.EnterpriseParcelDelivery.factory.RatingFactory;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.DeliveryRequestRepository;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.RatingRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
