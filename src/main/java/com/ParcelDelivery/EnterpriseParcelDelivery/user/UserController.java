@@ -1,12 +1,7 @@
-package com.ParcelDelivery.EnterpriseParcelDelivery.controller;
+package com.ParcelDelivery.EnterpriseParcelDelivery.user;
 
 import com.ParcelDelivery.EnterpriseParcelDelivery.exception.BadRequestException;
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.AuthDTO;
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.AuthResponseDTO;
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.UserDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
-import com.ParcelDelivery.EnterpriseParcelDelivery.service.CustomUserDetailsService;
-import com.ParcelDelivery.EnterpriseParcelDelivery.service.UserService;
 import com.ParcelDelivery.EnterpriseParcelDelivery.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +15,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 

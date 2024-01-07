@@ -1,7 +1,6 @@
-package com.ParcelDelivery.EnterpriseParcelDelivery.service;
+package com.ParcelDelivery.EnterpriseParcelDelivery.parcel;
 
 import com.ParcelDelivery.EnterpriseParcelDelivery.exception.BadRequestException;
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.ParcelDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Parcel;
 import com.ParcelDelivery.EnterpriseParcelDelivery.factory.ParcelFactory;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.ParcelRepository;

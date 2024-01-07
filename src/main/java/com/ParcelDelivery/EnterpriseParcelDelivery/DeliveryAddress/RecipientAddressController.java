@@ -1,16 +1,14 @@
-package com.ParcelDelivery.EnterpriseParcelDelivery.controller;
+package com.ParcelDelivery.EnterpriseParcelDelivery.DeliveryAddress;
 
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.RecipientAddressDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
-import com.ParcelDelivery.EnterpriseParcelDelivery.service.RecipientAddressService;
-import com.ParcelDelivery.EnterpriseParcelDelivery.service.UserService;
+import com.ParcelDelivery.EnterpriseParcelDelivery.user.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.List;
 
 @RequiredArgsConstructor

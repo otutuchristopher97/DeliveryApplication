@@ -1,9 +1,11 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.UserController;
 
 import com.ParcelDelivery.EnterpriseParcelDelivery.driver.DriverDTO;
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.*;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.RoleRepository;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.UserRepository;
+import com.ParcelDelivery.EnterpriseParcelDelivery.user.AuthDTO;
+import com.ParcelDelivery.EnterpriseParcelDelivery.user.AuthResponseDTO;
+import com.ParcelDelivery.EnterpriseParcelDelivery.user.UserDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;

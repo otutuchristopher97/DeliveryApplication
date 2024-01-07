@@ -1,15 +1,11 @@
-package com.ParcelDelivery.EnterpriseParcelDelivery.service;
+package com.ParcelDelivery.EnterpriseParcelDelivery.DeliveryAddress;
 
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.RecipientAddressDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.RecipientAddress;
-import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
 import com.ParcelDelivery.EnterpriseParcelDelivery.factory.RecipientAddressFactory;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.RecipientAddressRepository;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

@@ -1,11 +1,11 @@
-package com.ParcelDelivery.EnterpriseParcelDelivery.dto;
+package com.ParcelDelivery.EnterpriseParcelDelivery.user;
 
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 @Data
 @AllArgsConstructor

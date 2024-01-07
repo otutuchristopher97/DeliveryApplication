@@ -1,7 +1,7 @@
-package com.ParcelDelivery.EnterpriseParcelDelivery.controller;
+package com.ParcelDelivery.EnterpriseParcelDelivery.roleManager;
 
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Role;
-import com.ParcelDelivery.EnterpriseParcelDelivery.service.RoleService;
+import com.ParcelDelivery.EnterpriseParcelDelivery.roleManager.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

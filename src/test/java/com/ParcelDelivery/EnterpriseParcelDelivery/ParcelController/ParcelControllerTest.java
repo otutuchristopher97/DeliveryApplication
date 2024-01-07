@@ -1,7 +1,6 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.ParcelController;
 
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.ParcelDTO;
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.RecipientAddressDTO;
+import com.ParcelDelivery.EnterpriseParcelDelivery.parcel.ParcelDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Parcel;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.RoleRepository;
 import org.junit.jupiter.api.*;

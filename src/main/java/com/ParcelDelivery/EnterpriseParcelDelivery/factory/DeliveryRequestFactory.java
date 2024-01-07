@@ -1,7 +1,7 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.factory;
 
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.DeliveryRequestDTO;
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.DeliveryRequestResponseDTO;
+import com.ParcelDelivery.EnterpriseParcelDelivery.RequestDelivery.DeliveryRequestDTO;
+import com.ParcelDelivery.EnterpriseParcelDelivery.RequestDelivery.DeliveryRequestResponseDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.*;
 import org.springframework.stereotype.Service;
 

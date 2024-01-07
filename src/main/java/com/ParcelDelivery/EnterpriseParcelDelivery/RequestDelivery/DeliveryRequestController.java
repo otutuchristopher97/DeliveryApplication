@@ -1,18 +1,13 @@
-package com.ParcelDelivery.EnterpriseParcelDelivery.controller;
+package com.ParcelDelivery.EnterpriseParcelDelivery.RequestDelivery;
 
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.DeliveryRequestDTO;
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.DeliveryRequestResponseDTO;
-import com.ParcelDelivery.EnterpriseParcelDelivery.entity.DeliveryRequest;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
-import com.ParcelDelivery.EnterpriseParcelDelivery.service.DeliveryRequestService;
-import com.ParcelDelivery.EnterpriseParcelDelivery.service.UserService;
+import com.ParcelDelivery.EnterpriseParcelDelivery.user.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.List;
 
 @RequiredArgsConstructor

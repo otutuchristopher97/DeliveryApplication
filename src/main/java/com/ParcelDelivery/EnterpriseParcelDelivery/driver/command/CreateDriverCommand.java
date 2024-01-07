@@ -1,7 +1,7 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.driver.command;
 import com.ParcelDelivery.EnterpriseParcelDelivery.driver.DriverDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.driver.DriverRepository;
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.UserDTO;
+import com.ParcelDelivery.EnterpriseParcelDelivery.user.UserDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Driver;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Role;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;

@@ -1,14 +1,13 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.RecipientAddressController;
 
 
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.RecipientAddressDTO;
+import com.ParcelDelivery.EnterpriseParcelDelivery.DeliveryAddress.RecipientAddressDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.RoleRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
 import org.springframework.http.HttpHeaders;

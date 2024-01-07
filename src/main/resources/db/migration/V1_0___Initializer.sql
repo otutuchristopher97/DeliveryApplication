@@ -99,10 +99,10 @@ INSERT INTO roles (name) VALUES ('Driver');
 INSERT INTO roles (name) VALUES ('Admin');
 
 INSERT INTO users (name,email,password,role_id)
-VALUES ('Ayobami Sender','babalolaisaac@gmail.com','$2a$10$fHL9E/oj9CHDJ5yVg8zJnu4EFqv6rE67pifkN2AAvhKJH8ct.2Wj6','1');
+VALUES ('Chris sender','otutuchristopher97@gmail.com','$2y$10$gn8YWV0iGRI8wQc8PWBO.uhUHzOOg7a4FjzJmV5ndBB2Zxf8N9eQu','1');
 
 INSERT INTO users (name,email,password,role_id)
-VALUES ('Ayobami Admin','babalolaisaac2@gmail.com','$2a$10$fHL9E/oj9CHDJ5yVg8zJnu4EFqv6rE67pifkN2AAvhKJH8ct.2Wj6','3');
+VALUES ('Christopher Admin','admin@gmail.com','$2y$10$tqhI8fvKesh8KpcXIqsEqerMbtRVB3hh.L5kRedaobxqZCZ7yGHtO','3');
 
 INSERT INTO delivery_status (status) VALUES ('Awaiting delivery');
 INSERT INTO delivery_status (status) VALUES ('Processing');

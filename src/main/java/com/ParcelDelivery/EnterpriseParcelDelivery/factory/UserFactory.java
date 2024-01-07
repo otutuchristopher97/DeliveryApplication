@@ -1,11 +1,9 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.factory;
 
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.UserDTO;
+import com.ParcelDelivery.EnterpriseParcelDelivery.user.UserDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Role;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
-import com.ParcelDelivery.EnterpriseParcelDelivery.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 

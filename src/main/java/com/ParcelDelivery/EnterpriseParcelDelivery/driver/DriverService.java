@@ -2,51 +2,40 @@ package com.ParcelDelivery.EnterpriseParcelDelivery.driver;
 
 import com.ParcelDelivery.EnterpriseParcelDelivery.driver.command.*;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Driver;
-import com.ParcelDelivery.EnterpriseParcelDelivery.factory.DriverFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
 @Service
 public class DriverService {
-    private final DriverRepository driverRepository;
-
-    private final DriverFactory driverDTOFactory;
+    private final DriverCommandFactory driverCommandFactory;
 
     public Driver saveDriver(DriverDTO dto){
 
-        return
-                (Driver) DriverCommandFactory
+        return (Driver) driverCommandFactory
                         .create(DriverCommand.CREATE_DRIVER, dto).execute();
     }
-    public List<DriverDTO> getDrivers(){
-        List<Driver> drivers = driverRepository.findAll();
-
-        List<DriverDTO> dtos = new ArrayList<>();
-        for (Driver driver: drivers){
-            DriverDTO dto = driverDTOFactory.createDriverDTO(driver);
-            dtos.add(dto);
-        }
-        return dtos;
-
+    public List<Driver> getAllDriver() {
+        return (List<Driver>) driverCommandFactory
+                .create(DriverCommand.GET_All_DRIVER)
+                .execute();
     }
     public Driver getDriverById(int id){
 
-        return (Driver) DriverCommandFactory
-                        .create(DriverCommand.CREATE_DRIVER, id)
+        return (Driver) driverCommandFactory
+                        .create(DriverCommand.GET_DRIVER, id)
                         .execute();
     }
-    public String deleteDriver(int id){
-        driverRepository.deleteById(id);
-        return "Driver deleted";
+    public Boolean deleteDriver(int id){
+        return (Boolean) driverCommandFactory
+                .create(DriverCommand.DELETE_DRIVER, id)
+                .execute();
     }
-    public Driver updateDriver(Driver driver){
-        Driver existingDriver = driverRepository.findById(driver.getId()).get();
-        existingDriver.setAddress(driver.getAddress());
-        existingDriver.setPhone_number(driver.getPhone_number());
-        return driverRepository.save(existingDriver);
+    public Driver updateDriver(int id, String address, String phone){
+        return (Driver) driverCommandFactory
+                .create(DriverCommand.UPDATE_DRIVER, id, address, phone)
+                .execute();
     }
 }

@@ -9,8 +9,7 @@ import com.ParcelDelivery.EnterpriseParcelDelivery.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import static com.ParcelDelivery.EnterpriseParcelDelivery.driver.command.DriverCommand.CREATE_DRIVER;
-import static com.ParcelDelivery.EnterpriseParcelDelivery.driver.command.DriverCommand.GET_DRIVER;
+import static com.ParcelDelivery.EnterpriseParcelDelivery.driver.command.DriverCommand.*;
 
 @Component
 @RequiredArgsConstructor
@@ -30,6 +29,12 @@ public class DriverCommandFactory
                 return new CreateDriverCommand(driverRepository, userRepository, userFactory, roleRepository, driverDTOFactory, (DriverDTO)params[0]);
             case GET_DRIVER:
                 return new GetDriverCommand(driverRepository, (Integer)params[0]);
+            case GET_All_DRIVER:
+                return new GetAllDriveCommand(driverRepository);
+            case DELETE_DRIVER:
+                return new DeleteDriverCommand(driverRepository, (Integer)params[0]);
+            case UPDATE_DRIVER:
+                return new UpdateDriverCommand(driverRepository, (Integer)params[0], (String)params[1], (String)params[2]);
             default:
                 return null;
         }

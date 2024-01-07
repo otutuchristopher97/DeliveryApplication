@@ -1,4 +1,4 @@
-package com.ParcelDelivery.EnterpriseParcelDelivery.service;
+package com.ParcelDelivery.EnterpriseParcelDelivery.user;
 
 import com.ParcelDelivery.EnterpriseParcelDelivery.exception.BadRequestException;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;

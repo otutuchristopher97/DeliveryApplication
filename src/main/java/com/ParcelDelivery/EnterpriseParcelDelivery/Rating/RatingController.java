@@ -1,7 +1,5 @@
-package com.ParcelDelivery.EnterpriseParcelDelivery.controller;
+package com.ParcelDelivery.EnterpriseParcelDelivery.Rating;
 
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.RatingDTO;
-import com.ParcelDelivery.EnterpriseParcelDelivery.service.RatingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

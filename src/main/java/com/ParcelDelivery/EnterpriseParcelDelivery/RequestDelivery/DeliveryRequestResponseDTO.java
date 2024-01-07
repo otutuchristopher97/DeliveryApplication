@@ -1,4 +1,4 @@
-package com.ParcelDelivery.EnterpriseParcelDelivery.dto;
+package com.ParcelDelivery.EnterpriseParcelDelivery.RequestDelivery;
 
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.DeliveryStatus;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Driver;

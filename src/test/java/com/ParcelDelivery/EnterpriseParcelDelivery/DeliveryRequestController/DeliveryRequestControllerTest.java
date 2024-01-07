@@ -1,16 +1,15 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.DeliveryRequestController;
 
+import com.ParcelDelivery.EnterpriseParcelDelivery.Rating.RatingDTO;
+import com.ParcelDelivery.EnterpriseParcelDelivery.RequestDelivery.DeliveryRequestDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.dto.*;
-import com.ParcelDelivery.EnterpriseParcelDelivery.repository.RoleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;

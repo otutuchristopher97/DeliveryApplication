@@ -1,7 +1,6 @@
-package com.ParcelDelivery.EnterpriseParcelDelivery.service;
+package com.ParcelDelivery.EnterpriseParcelDelivery.Rating;
 
 import com.ParcelDelivery.EnterpriseParcelDelivery.exception.BadRequestException;
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.RatingDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.DeliveryRequest;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Rating;
 import com.ParcelDelivery.EnterpriseParcelDelivery.factory.RatingFactory;

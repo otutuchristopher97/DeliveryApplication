@@ -1,7 +1,7 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.factory;
 
 
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.RatingDTO;
+import com.ParcelDelivery.EnterpriseParcelDelivery.Rating.RatingDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.DeliveryRequest;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Rating;
 import org.springframework.stereotype.Service;

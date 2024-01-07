@@ -1,7 +1,6 @@
-package com.ParcelDelivery.EnterpriseParcelDelivery.service;
+package com.ParcelDelivery.EnterpriseParcelDelivery.user;
 
 import com.ParcelDelivery.EnterpriseParcelDelivery.exception.BadRequestException;
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.UserDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Role;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
 import com.ParcelDelivery.EnterpriseParcelDelivery.factory.UserFactory;

@@ -1,4 +1,4 @@
-package com.ParcelDelivery.EnterpriseParcelDelivery.dto;
+package com.ParcelDelivery.EnterpriseParcelDelivery.user;
 import lombok.Data;
 
 

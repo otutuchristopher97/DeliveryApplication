@@ -1,8 +1,8 @@
-package com.ParcelDelivery.EnterpriseParcelDelivery.dto;
+package com.ParcelDelivery.EnterpriseParcelDelivery.parcel;
 
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 @Data
 public class ParcelDTO {
     private int id;

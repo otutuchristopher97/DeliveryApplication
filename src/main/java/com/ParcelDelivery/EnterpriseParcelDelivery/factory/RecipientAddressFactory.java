@@ -1,11 +1,10 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.factory;
 
-import com.ParcelDelivery.EnterpriseParcelDelivery.dto.RecipientAddressDTO;
+import com.ParcelDelivery.EnterpriseParcelDelivery.DeliveryAddress.RecipientAddressDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.RecipientAddress;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
 import com.ParcelDelivery.EnterpriseParcelDelivery.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
