@@ -1,4 +1,4 @@
-package com.ParcelDelivery.EnterpriseParcelDelivery.repository;
+package com.ParcelDelivery.EnterpriseParcelDelivery.user;
 
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
 import lombok.RequiredArgsConstructor;

@@ -3,7 +3,6 @@ package com.ParcelDelivery.EnterpriseParcelDelivery.parcel;
 import com.ParcelDelivery.EnterpriseParcelDelivery.exception.BadRequestException;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Parcel;
 import com.ParcelDelivery.EnterpriseParcelDelivery.factory.ParcelFactory;
-import com.ParcelDelivery.EnterpriseParcelDelivery.repository.ParcelRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

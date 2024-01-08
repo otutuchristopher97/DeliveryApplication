@@ -4,8 +4,8 @@ import com.ParcelDelivery.EnterpriseParcelDelivery.driver.DriverDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.driver.DriverRepository;
 import com.ParcelDelivery.EnterpriseParcelDelivery.factory.DriverFactory;
 import com.ParcelDelivery.EnterpriseParcelDelivery.factory.UserFactory;
-import com.ParcelDelivery.EnterpriseParcelDelivery.repository.RoleRepository;
-import com.ParcelDelivery.EnterpriseParcelDelivery.repository.UserRepository;
+import com.ParcelDelivery.EnterpriseParcelDelivery.roleManager.RoleRepository;
+import com.ParcelDelivery.EnterpriseParcelDelivery.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

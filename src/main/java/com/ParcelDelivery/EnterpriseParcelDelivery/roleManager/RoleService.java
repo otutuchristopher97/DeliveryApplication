@@ -2,7 +2,6 @@ package com.ParcelDelivery.EnterpriseParcelDelivery.roleManager;
 
 import com.ParcelDelivery.EnterpriseParcelDelivery.exception.BadRequestException;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Role;
-import com.ParcelDelivery.EnterpriseParcelDelivery.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

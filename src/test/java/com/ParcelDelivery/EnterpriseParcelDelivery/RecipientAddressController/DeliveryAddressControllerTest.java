@@ -1,8 +1,8 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.RecipientAddressController;
 
 
-import com.ParcelDelivery.EnterpriseParcelDelivery.DeliveryAddress.RecipientAddressDTO;
-import com.ParcelDelivery.EnterpriseParcelDelivery.repository.RoleRepository;
+import com.ParcelDelivery.EnterpriseParcelDelivery.DeliveryAddress.DeliveryAddressDTO;
+import com.ParcelDelivery.EnterpriseParcelDelivery.roleManager.RoleRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,7 +15,7 @@ import org.springframework.http.HttpHeaders;
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class RecipientAddressControllerTest {
+class DeliveryAddressControllerTest {
     @LocalServerPort
     private int port;
 
@@ -42,7 +42,7 @@ class RecipientAddressControllerTest {
         String url =baseUrl+"recipient-address/save";
         String token = senderToken;
         // Create the DTO
-        RecipientAddressDTO dto = new RecipientAddressDTO();
+        DeliveryAddressDTO dto = new DeliveryAddressDTO();
         dto.setRecipient_phone_number("08022332233");
         dto.setAddress("21 Bello street");
         dto.setRecipient_email("ajanagbe@gmail.com");
@@ -52,10 +52,10 @@ class RecipientAddressControllerTest {
         headers.set("Authorization", token);
 
         // Create the request entity
-        HttpEntity<RecipientAddressDTO> request = new HttpEntity<>(dto, headers);
+        HttpEntity<DeliveryAddressDTO> request = new HttpEntity<>(dto, headers);
 
         // Send the request and get the response
-        RecipientAddressDTO response = restTemplate.postForObject(url, request, RecipientAddressDTO.class);
+        DeliveryAddressDTO response = restTemplate.postForObject(url, request, DeliveryAddressDTO.class);
 
         // Assert that the response is as expected
         assertEquals("ajanagbe@gmail.com",response.getRecipient_email());

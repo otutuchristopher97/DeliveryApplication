@@ -2,7 +2,6 @@ package com.ParcelDelivery.EnterpriseParcelDelivery.user;
 
 import com.ParcelDelivery.EnterpriseParcelDelivery.exception.BadRequestException;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
-import com.ParcelDelivery.EnterpriseParcelDelivery.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

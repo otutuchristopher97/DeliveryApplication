@@ -4,8 +4,7 @@ import com.ParcelDelivery.EnterpriseParcelDelivery.exception.BadRequestException
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.DeliveryRequest;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Rating;
 import com.ParcelDelivery.EnterpriseParcelDelivery.factory.RatingFactory;
-import com.ParcelDelivery.EnterpriseParcelDelivery.repository.DeliveryRequestRepository;
-import com.ParcelDelivery.EnterpriseParcelDelivery.repository.RatingRepository;
+import com.ParcelDelivery.EnterpriseParcelDelivery.RequestDelivery.DeliveryRequestRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

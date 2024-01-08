@@ -1,10 +1,14 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.RequestDelivery;
 
+import com.ParcelDelivery.EnterpriseParcelDelivery.RequestDelivery.command.DeliveryRequestCommand;
+import com.ParcelDelivery.EnterpriseParcelDelivery.RequestDelivery.command.DeliveryRequestCommandFactory;
 import com.ParcelDelivery.EnterpriseParcelDelivery.driver.DriverRepository;
 import com.ParcelDelivery.EnterpriseParcelDelivery.exception.BadRequestException;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.*;
 import com.ParcelDelivery.EnterpriseParcelDelivery.factory.DeliveryRequestFactory;
-import com.ParcelDelivery.EnterpriseParcelDelivery.repository.*;
+import com.ParcelDelivery.EnterpriseParcelDelivery.parcel.ParcelRepository;
+import com.ParcelDelivery.EnterpriseParcelDelivery.statusOfDelivery.DeliveryStatusRepository;
+import com.ParcelDelivery.EnterpriseParcelDelivery.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,88 +23,46 @@ public class DeliveryRequestService {
     private final UserRepository userRepository;
     private final DeliveryStatusRepository deliveryStatusRepository;
     private final ParcelRepository parcelRepository;
+    private final DeliveryRequestCommandFactory deliveryRequestCommandFactory;
 
     private final DeliveryRequestFactory deliveryRequestFactory;
 
 
     public DeliveryRequestResponseDTO saveDeliveryRequest(DeliveryRequestDTO deliveryRequestDTO){
-        Driver driver = driverRepository.findById(deliveryRequestDTO.getDriver_id()).orElse(null);
-        User user  = userRepository.findById(deliveryRequestDTO.getUser_id()).orElse(null);
-        Parcel parcel = parcelRepository.findById(deliveryRequestDTO.getParcel_id()).orElse(null);
-        DeliveryStatus deliveryStatus = deliveryStatusRepository.findById(1).orElse(null);
-
-        DeliveryRequest newDeliveryRequest = deliveryRequestFactory.createEntity(deliveryRequestDTO,driver,user,deliveryStatus,parcel);
-        DeliveryRequest deliveryRequest = deliveryRequestRepository.save(newDeliveryRequest);
-        return deliveryRequestFactory.createEntityResponse(deliveryRequest);
+        return (DeliveryRequestResponseDTO) deliveryRequestCommandFactory
+                .create(DeliveryRequestCommand.SAVE_DELIVERY_REQUEST, deliveryRequestDTO).execute();
     }
     public DeliveryRequestResponseDTO updateRequestStatus(DeliveryRequestDTO deliveryRequestDTO){
-        DeliveryRequest existingRequest  = deliveryRequestRepository.findById(deliveryRequestDTO.getId()).orElse(null);
-        DeliveryStatus deliveryStatus = deliveryStatusRepository.findById(deliveryRequestDTO.getDelivery_status_id()).orElse(null);
-        if(existingRequest==null){
-            throw new BadRequestException("Request not found");
-        }
-        existingRequest.setDeliveryStatus(deliveryStatus);
-        deliveryRequestRepository.save(existingRequest);
-        return deliveryRequestFactory.createEntityResponse(existingRequest);
+        return (DeliveryRequestResponseDTO) deliveryRequestCommandFactory
+                .create(DeliveryRequestCommand.UPDATE_DELIVERY_REQUEST_STATUS, deliveryRequestDTO).execute();
 
     }
     public DeliveryRequestResponseDTO assignDriver(DeliveryRequestDTO deliveryRequestDTO){
-        DeliveryRequest existingRequest  = deliveryRequestRepository.findById(deliveryRequestDTO.getId()).orElse(null);
-        Driver driver = driverRepository.findById(deliveryRequestDTO.getDriver_id()).orElse(null);
-        if(driver==null){
-            throw new BadRequestException("Driver not found");
-        }
-        if(existingRequest==null){
-            throw new BadRequestException("Request not found");
-        }
-        existingRequest.setDriver(driver);
-        deliveryRequestRepository.save(existingRequest);
-        return deliveryRequestFactory.createEntityResponse(existingRequest);
+        return (DeliveryRequestResponseDTO) deliveryRequestCommandFactory
+                .create(DeliveryRequestCommand.ASSIGN_REQUEST_DELIVERY_DRIVER, deliveryRequestDTO).execute();
     }
     public DeliveryRequestResponseDTO updateRequest(DeliveryRequestDTO deliveryRequestDTO){
-        Driver driver = driverRepository.findById(deliveryRequestDTO.getDriver_id()).orElse(null);
-        User user  = userRepository.findById(deliveryRequestDTO.getUser_id()).orElse(null);
-        Parcel parcel = parcelRepository.findById(deliveryRequestDTO.getParcel_id()).orElse(null);
-        DeliveryStatus deliveryStatus = deliveryStatusRepository.findById(1).orElse(null);
-        DeliveryRequest deliveryRequest = deliveryRequestRepository.findById(deliveryRequestDTO.getId()).orElse(null);
-        if(deliveryRequest==null){
-            throw new BadRequestException("Request not found");
-        }
-        DeliveryRequest updateRequest = deliveryRequestFactory.updateEntity(deliveryRequest,deliveryRequestDTO,driver,user,parcel,deliveryStatus);
-        deliveryRequestRepository.save(updateRequest);
-        return deliveryRequestFactory.createEntityResponse(deliveryRequest);
+        return (DeliveryRequestResponseDTO) deliveryRequestCommandFactory
+                .create(DeliveryRequestCommand.UPDATE_DELIVERY_REQUEST, deliveryRequestDTO).execute();
 
     }
 
-    public List<DeliveryRequestResponseDTO> getDeliveryRequests(Integer driver_id){
-        List<DeliveryRequest> deliveryRequests = deliveryRequestRepository.findAll();
-        if(driver_id != null){
-            deliveryRequests = deliveryRequestRepository.findByDriverId(driver_id);
+    public List<DeliveryRequestResponseDTO> getDeliveryRequests(Integer id){
+        try{
+            return (List<DeliveryRequestResponseDTO>) deliveryRequestCommandFactory
+                    .create(DeliveryRequestCommand.GET_All_DELIVERY_REQUEST_BY_ID, id).execute();
+        } catch (Exception e){
+            throw new BadRequestException(e.getMessage());
         }
-        List<DeliveryRequestResponseDTO> dtos = new ArrayList<>();
-        for (DeliveryRequest deliveryRequest: deliveryRequests){
-            DeliveryRequestResponseDTO dto = deliveryRequestFactory.createEntityResponse(deliveryRequest);
-            dtos.add(dto);
-        }
-        return dtos;
 
 
     }
-    public DeliveryRequestResponseDTO findDeliveryRequestById(int id){
+    public DeliveryRequestResponseDTO getDeliveryRequestById(int id){
         DeliveryRequest deliveryRequest = deliveryRequestRepository.findById(id).orElse(null);
         if(deliveryRequest==null){
             throw new BadRequestException("Request not found");
         }
         return deliveryRequestFactory.createEntityResponse(deliveryRequest);
-    }
-    public List<DeliveryRequestResponseDTO> getDeliveryRequestsByDriverId(int driver_id){
-        List<DeliveryRequest> deliveryRequests = deliveryRequestRepository.findByDriverId(driver_id);
-        List<DeliveryRequestResponseDTO> dtos = new ArrayList<>();
-        for (DeliveryRequest deliveryRequest: deliveryRequests){
-            DeliveryRequestResponseDTO dto = deliveryRequestFactory.createEntityResponse(deliveryRequest);
-            dtos.add(dto);
-        }
-        return dtos;
     }
     public List<DeliveryRequestResponseDTO> getDeliveryRequestsByUserIdAndDeliveryStatusId(Integer user_id, Integer delivery_status_id){
         List<DeliveryRequest> deliveryRequests = deliveryRequestRepository.findByUserId(user_id);

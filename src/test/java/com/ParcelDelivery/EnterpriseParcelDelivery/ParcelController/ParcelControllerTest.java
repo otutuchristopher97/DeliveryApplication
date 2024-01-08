@@ -2,7 +2,7 @@ package com.ParcelDelivery.EnterpriseParcelDelivery.ParcelController;
 
 import com.ParcelDelivery.EnterpriseParcelDelivery.parcel.ParcelDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Parcel;
-import com.ParcelDelivery.EnterpriseParcelDelivery.repository.RoleRepository;
+import com.ParcelDelivery.EnterpriseParcelDelivery.roleManager.RoleRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

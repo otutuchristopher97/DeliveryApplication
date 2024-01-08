@@ -1,8 +1,8 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.UserController;
 
 import com.ParcelDelivery.EnterpriseParcelDelivery.driver.DriverDTO;
-import com.ParcelDelivery.EnterpriseParcelDelivery.repository.RoleRepository;
-import com.ParcelDelivery.EnterpriseParcelDelivery.repository.UserRepository;
+import com.ParcelDelivery.EnterpriseParcelDelivery.roleManager.RoleRepository;
+import com.ParcelDelivery.EnterpriseParcelDelivery.user.UserRepository;
 import com.ParcelDelivery.EnterpriseParcelDelivery.user.AuthDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.user.AuthResponseDTO;
 import com.ParcelDelivery.EnterpriseParcelDelivery.user.UserDTO;

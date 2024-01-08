@@ -5,7 +5,7 @@ import lombok.Data;
 import jakarta.validation.constraints.NotNull;
 
 @Data
-public class RecipientAddressDTO {
+public class DeliveryAddressDTO {
     private int id;
 
     private int user_id;

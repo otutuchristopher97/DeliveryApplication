@@ -4,8 +4,7 @@ import com.ParcelDelivery.EnterpriseParcelDelivery.exception.BadRequestException
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Role;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
 import com.ParcelDelivery.EnterpriseParcelDelivery.factory.UserFactory;
-import com.ParcelDelivery.EnterpriseParcelDelivery.repository.RoleRepository;
-import com.ParcelDelivery.EnterpriseParcelDelivery.repository.UserRepository;
+import com.ParcelDelivery.EnterpriseParcelDelivery.roleManager.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
