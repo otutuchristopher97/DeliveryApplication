@@ -31,20 +31,19 @@ public class UserController {
     private final CustomUserDetailsService customUserDetailsService;
 
     @PostMapping("/user/add")
-    public ResponseEntity<User> saveUser(@RequestBody @Valid  UserDTO userDTO){
+    public ResponseEntity<User> addUser(@RequestBody @Valid  UserDTO userDTO){
         userDTO.setRole_id(1);
-        return new ResponseEntity<>(service.saveUser(userDTO), HttpStatus.CREATED);
+        return new ResponseEntity<>(service.addUser(userDTO), HttpStatus.CREATED);
 
     }
     @PostMapping("/user/admin/add")
     @PreAuthorize("hasAuthority('Admin')")
     public ResponseEntity<User> createAdminAccount(@RequestBody @Valid  UserDTO userDTO){
         userDTO.setRole_id(3);
-        return new ResponseEntity<>(service.saveUser(userDTO), HttpStatus.CREATED);
-
+        return new ResponseEntity<>(service.addUser(userDTO), HttpStatus.CREATED);
     }
     @GetMapping("/users")
-    public ResponseEntity<List<User>> findAllUsers(@RequestParam(value="role_id",required = false) Integer role_id){
+    public ResponseEntity<List<User>> getAllUsers(@RequestParam(value="role_id",required = false) Integer role_id){
         if(role_id !=null){
             return ResponseEntity.ok(service.getUsersByRoleId(role_id));
         }
@@ -53,8 +52,7 @@ public class UserController {
     }
     @GetMapping("/user/{id}")
     public User getUserById(@PathVariable int id){
-
-        return service.findUserById(id);
+        return service.getUserById(id);
     }
     @PutMapping("/user/update")
     public User updateUser(@RequestBody User user){
@@ -62,8 +60,7 @@ public class UserController {
         return service.updateUser(user);
     }
     @DeleteMapping("/user/delete/{id}")
-    public String deleteUser(@PathVariable int id){
-
+    public Boolean deleteUser(@PathVariable int id){
         return service.deleteUser(id);
     }
     @PostMapping("/authenticate")

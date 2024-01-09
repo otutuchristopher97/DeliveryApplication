@@ -17,25 +17,25 @@ public class ParcelController {
     private final UserService userService;
 
    @PostMapping("/parcel/add")
-    public Parcel addParcel(@RequestBody ParcelDTO parcelDTO, @AuthenticationPrincipal User user){
+    public Parcel createParcel(@RequestBody ParcelDTO parcelDTO, @AuthenticationPrincipal User user){
        User loggedInUser = userService.authenticatedUser(user);
        parcelDTO.setUser_id(loggedInUser.getId());
        return service.saveParcel(parcelDTO);
     }
     @GetMapping("/parcels")
-    public List<Parcel> findAllParcels(){
+    public List<Parcel> getAllParcel(){
        return service.getParcels();
     }
     @GetMapping("/parcel/{id}")
-    public Parcel findParcelById(@PathVariable int id){
+    public Parcel getParcelById(@PathVariable int id){
        return service.getParcelById(id);
     }
-    @PutMapping("/parcel/update")
-    public Parcel updateParcel(@RequestBody Parcel parcel){
-       return service.updateParcel(parcel);
+    @PutMapping("/parcel/update/{id}")
+    public Parcel updateParcel(@PathVariable int id, @RequestBody ParcelDTO parcelDTO){
+       return service.updateParcel(id, parcelDTO);
     }
     @DeleteMapping("/parcel/delete/{id}")
-    public String deleteParcel(@PathVariable int id){
+    public Boolean deleteParcel(@PathVariable int id){
        return service.deleteParcel(id);
     }
 

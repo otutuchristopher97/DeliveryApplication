@@ -1,7 +1,11 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.roleManager;
 
+import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
 import com.ParcelDelivery.EnterpriseParcelDelivery.exception.BadRequestException;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Role;
+import com.ParcelDelivery.EnterpriseParcelDelivery.roleManager.command.RoleCommand;
+import com.ParcelDelivery.EnterpriseParcelDelivery.roleManager.command.RoleCommandFactory;
+import com.ParcelDelivery.EnterpriseParcelDelivery.user.command.UserCommand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,26 +15,25 @@ import java.util.List;
 @Service
 public class RoleService {
     private final RoleRepository repository;
-    public Role saveRole(Role role){
-        return repository.save(role);
+    private final RoleCommandFactory roleCommandFactory;
+    public Role createRole(Role role){
+        return (Role) roleCommandFactory
+                .create(RoleCommand.CREATE_ROLE, role).execute();
     }
     public List<Role> getRoles(){
-        return repository.findAll();
+        return (List<Role>) roleCommandFactory
+                .create(RoleCommand.GET_ALL_ROLE).execute();
     }
-    public Role findRoleById(int id){
-        Role role = repository.findById(id).orElse(null);
-        if(role==null){
-            throw new BadRequestException("Role not found with id"+id);
-        }
-        return role;
+    public Role getRoleById(int id){
+        return (Role) roleCommandFactory
+                .create(RoleCommand.GET_ROLE_BY_ID, id).execute();
     }
     public Role updateRole(Role role){
-        Role existingRole = repository.findById(role.getId()).orElse(null);
-        existingRole.setName(role.getName());
-        return repository.save(existingRole);
+        return (Role) roleCommandFactory
+                .create(RoleCommand.GET_ROLE_BY_ID, role).execute();
     }
-    public String deleteRole(int id){
-        repository.deleteById(id);
-        return "Role deleted";
+    public Boolean deleteRole(int id){
+        return (Boolean) roleCommandFactory
+                .create(RoleCommand.DELETE_ROLE, id).execute();
     }
 }

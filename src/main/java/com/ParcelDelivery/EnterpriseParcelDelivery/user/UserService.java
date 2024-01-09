@@ -1,17 +1,11 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.user;
 
-import com.ParcelDelivery.EnterpriseParcelDelivery.exception.BadRequestException;
-import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Role;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
-import com.ParcelDelivery.EnterpriseParcelDelivery.factory.UserFactory;
-import com.ParcelDelivery.EnterpriseParcelDelivery.roleManager.RoleRepository;
+import com.ParcelDelivery.EnterpriseParcelDelivery.user.command.UserCommand;
+import com.ParcelDelivery.EnterpriseParcelDelivery.user.command.UserCommandFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,62 +13,41 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class UserService {
+    private final UserCommandFactory userCommandFactory;
 
-    private final UserRepository repository;
-
-    private final BCryptPasswordEncoder passwordEncoder;
-
-    private final RoleRepository roleRepository;
-
-    private final UserFactory userFactory;
-
-    public User saveUser(UserDTO userDTO){
-        Role role = roleRepository.findById(userDTO.getRole_id()).orElse(null);
-        if (role == null) {
-            throw new BadRequestException("Role not found with id: " + userDTO.getRole_id());
-        }
-        User checkUser = repository.findByEmail(userDTO.getEmail());
-        if(checkUser!=null){
-            throw new BadRequestException("User already exist");
-        }
-        User user = userFactory.createEntity(userDTO,role);
-        return repository.save(user);
-
+    public User addUser(UserDTO userDTO){
+        return (User) userCommandFactory
+                .create(UserCommand.ADD_USER, userDTO).execute();
     }
 
     public List<User> getUsers(){
-
-        return repository.findAll();
+        return (List<User>) userCommandFactory
+                .create(UserCommand.GET_ALL_USER).execute();
     }
     public List<User> getUsersByRoleId(int roleId){
-        return repository.findByRoleId(roleId);
+        return (List<User>) userCommandFactory
+                .create(UserCommand.GET_USER_BY_ROLE_ID, roleId).execute();
     }
-    public User findUserById(int id){
-        User user = repository.findById(id).orElse(null);
-        if(user==null){
-            throw new BadRequestException("User not found with id: " + id);
-        }
-        return user;
+    public User getUserById(int id){
+        return (User) userCommandFactory
+                .create(UserCommand.GET_USER_BY_ID, id).execute();
     }
-    public String deleteUser(int id){
-        repository.deleteById(id);
-        return "User deleted";
+    public Boolean deleteUser(int id){
+        return (Boolean) userCommandFactory
+                .create(UserCommand.DELETE_USER, id).execute();
     }
     public User updateUser(User user){
-        User existingUser = repository.findById(user.getId()).orElse(null);
-        existingUser.setName(user.getName());
-        return repository.save(existingUser);
+        return (User) userCommandFactory
+                .create(UserCommand.UPDATE_USER, user).execute();
     }
 
     public User authenticatedUser(@AuthenticationPrincipal User user){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        User loggedInUser = repository.findByEmail(userDetails.getUsername());
-        return loggedInUser;
-
+        return (User) userCommandFactory
+                .create(UserCommand.GET_CURRENT_USER, user).execute();
     }
 
     public User findUserByEmail(String email) {
-        return repository.findByEmail(email);
+        return (User) userCommandFactory
+                .create(UserCommand.GET_USER_BY_EMAIL, email).execute();
     }
 }
