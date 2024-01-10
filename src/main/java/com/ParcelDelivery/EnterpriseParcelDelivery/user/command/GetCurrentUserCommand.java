@@ -1,6 +1,7 @@
 package com.ParcelDelivery.EnterpriseParcelDelivery.user.command;
 
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
+import com.ParcelDelivery.EnterpriseParcelDelivery.exception.BadRequestException;
 import com.ParcelDelivery.EnterpriseParcelDelivery.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -13,6 +14,9 @@ public class GetCurrentUserCommand implements UserCommand{
     public User execute(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        if(userDetails == null){
+            throw new BadRequestException("Invalid token");
+        }
         return userRepository.findByEmail(userDetails.getUsername());
     }
 }

@@ -3,21 +3,24 @@ package com.ParcelDelivery.EnterpriseParcelDelivery.parcel;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.Parcel;
 import com.ParcelDelivery.EnterpriseParcelDelivery.entity.User;
 import com.ParcelDelivery.EnterpriseParcelDelivery.user.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
+@Validated
 @RequestMapping("/api")
 public class ParcelController {
     private final ParcelService service;
     private final UserService userService;
 
    @PostMapping("/parcel/add")
-    public Parcel createParcel(@RequestBody ParcelDTO parcelDTO, @AuthenticationPrincipal User user){
+    public Parcel createParcel(@Valid @RequestBody ParcelDTO parcelDTO, @AuthenticationPrincipal User user){
        User loggedInUser = userService.authenticatedUser(user);
        parcelDTO.setUser_id(loggedInUser.getId());
        return service.saveParcel(parcelDTO);

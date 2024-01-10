@@ -31,10 +31,8 @@ public class UserController {
     private final CustomUserDetailsService customUserDetailsService;
 
     @PostMapping("/user/add")
-    public ResponseEntity<User> addUser(@RequestBody @Valid  UserDTO userDTO){
-        userDTO.setRole_id(1);
+    public ResponseEntity<User> addUser(@Valid @RequestBody  UserDTO userDTO){
         return new ResponseEntity<>(service.addUser(userDTO), HttpStatus.CREATED);
-
     }
     @PostMapping("/user/admin/add")
     @PreAuthorize("hasAuthority('Admin')")

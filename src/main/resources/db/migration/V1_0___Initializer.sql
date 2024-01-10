@@ -1,4 +1,10 @@
-DROP TABLE IF EXISTS parcel_delivery;
+DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS parcel;
+DROP TABLE IF EXISTS driver;
+DROP TABLE IF EXISTS recipient_address;
+DROP TABLE IF EXISTS delivery_request;
+DROP TABLE IF EXISTS rating;
 
 CREATE TABLE `roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

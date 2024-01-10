@@ -25,8 +25,9 @@ public class ApplicationExceptionHandler {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(BadRequestException.class)
-    public Map<String, String> handBadRequestException(BadRequestException ex){
-        Map<String, String> errorMap=new HashMap<>();
+    public Map<String, Object> handBadRequestException(BadRequestException ex){
+        Map<String, Object> errorMap=new HashMap<>();
+        errorMap.put("statusCode", 400);
         errorMap.put("message", ex.getMessage());
         return errorMap;
 

@@ -16,8 +16,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 public class ParcelService {
-
-    private final ParcelRepository repository;
     private final ParcelCommandFactory parcelCommandFactory;
 
     public Parcel saveParcel(ParcelDTO parcelDTO){
